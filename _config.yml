@@ -12,14 +12,12 @@ description: Blog
 url: http://brendanhasz.github.io/
 
 # Social links
-github_url: https://github.com/brendanhasz
-linkedin_url: http://www.linkedin.com/in/brendan-hasz
-publications_url: http://scholar.google.com/citations?user=FLlio0kAAAAJ
+github_url: 
+linkedin_url: 
+publications_url: 
 social:
   links:
-    - http://www.linkedin.com/in/brendan-hasz
-    - https://www.kaggle.com/brendanhasz
-    - https://github.com/brendanhasz
+    - https://github.com/
 
 # Images + files
 logo: /assets/img/headshot.png
