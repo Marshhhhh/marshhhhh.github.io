@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+
+{% comment %}
+Get assets path
+{% endcomment %}
+{% if site.main_github_io %}
+  {% assign assets = "/assets" %}
+{% else %}
+  {% assign assets = "assets" %}
+{% endif %}
+
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
     <meta charset="UTF-8">
@@ -7,12 +17,15 @@
     {% if page.img_url %}
     <meta property="og:image" content="{{ page.img_url }}"/>
     {% else %}
-    <meta property="og:image" content="/assets/img/blog_og_image.png"/>
+    <meta property="og:image" content="{{ assets }}/img/blog_og_image.png"/>
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="628" />
     {% endif %}
-    <link rel="stylesheet" type="text/css" href="/assets/css/{{ site.syntax_highlight_stylesheet }}">
-    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    {% unless site.main_github_io %}
+    <base href="{{ site.url }}">
+    {% endunless %}
+    <link rel="stylesheet" type="text/css" href="{{ assets }}/css/{{ site.syntax_highlight_stylesheet }}">
+    <link rel="stylesheet" type="text/css" href="{{ assets }}/css/main.css">
     <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="atom.xml" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script>
@@ -40,10 +53,10 @@
 
         <!-- Name -->
         <div class="name_group">
-          <h1><a href="/">{{ site.name }}</a></h1>
+          <h1><a href="">{{ site.name }}</a></h1>
         </div>
 
-        <a href="/"><img src="{{ site.logo }}" alt="Logo" class="center_img" ></a>
+        <a href=""><img src="{{ site.logo }}" alt="Logo" class="center_img" ></a>
 
         <!-- Position + company -->
         <div class="link_group">
@@ -57,7 +70,7 @@
           <div class="row">
             <a href="{{ site.company_url }}">
               <div class="col1">
-                <img src="/assets/img/company_icon.png" height="16" width="16">
+                <img src="{{ assets }}/img/company_icon.png" height="16" width="16">
                 <span> {{ site.company_name }} </span>
               </div>
             </a>
@@ -65,7 +78,7 @@
 
           <div class="row">
             <div class="col1">
-              <img src="/assets/img/place_icon_light.png" height="16" width="16">
+              <img src="{{ assets }}/img/place_icon_light.png" height="16" width="16">
               <span> {{ site.place_name }} </span>
             </div>
           </div>
@@ -78,13 +91,13 @@
           <div class="row">
             <a href="{{ site.github_url }}">
               <div class="col2">
-                <img src="/assets/img/github_icon_light.png" height="16" width="16">
+                <img src="{{ assets }}/img/github_icon_light.png" height="16" width="16">
                 <span> Github </span>
               </div>
             </a>
             <a href="{{ site.linkedin_url }}">
               <div class="col2">
-                <img src="/assets/img/linkedin_icon_light.png" height="16" width="16">
+                <img src="{{ assets }}/img/linkedin_icon_light.png" height="16" width="16">
                 <span> LinkedIn </span>
               </div>
             </a>
@@ -93,14 +106,14 @@
           <div class="row">
             <a href="mailto:{{ site.email }}">
               <div class="col2">
-                <img src="/assets/img/email_icon_light.png" height="16" width="16">
+                <img src="{{ assets }}/img/email_icon_light.png" height="16" width="16">
                 <span> Email </span>
               </div>
             </a>
-            <a href="{{ site.publications_url }}">
+            <a href="{{ site.resume_url }}">
               <div class="col2">
-                <img src="/assets/img/cv_icon_light.png" height="16" width="16">
-                <span> Publications </span>
+                <img src="{{ assets }}/img/cv_icon_light.png" height="16" width="16">
+                <span> Resume </span>
               </div>
             </a>
           </div>
@@ -116,12 +129,12 @@
         <div class="small_header_box">
           <div class="name_header_box">
             <div class="name_header_img">
-              <a href="/">
+              <a href="">
                 <img src="{{ site.logo }}" alt="Logo" height="60">
               </a>
             </div>
             <div class="name_header_name">
-              <h1><a href="/">{{ site.name }}</a></h1>
+              <h1><a href="">{{ site.name }}</a></h1>
             </div>
           </div>
         </div>
@@ -136,7 +149,7 @@
           <div class="row">
             <div class="col1">
               <a href="{{ site.company_url }}">
-                  <img src="/assets/img/company_icon.png" height="16" width="16">
+                  <img src="{{ assets }}/img/company_icon.png" height="16" width="16">
                   <span> {{ site.company_name }} </span>
               </a>
             </div>
@@ -148,13 +161,13 @@
                 <div class="row">
                   <a href="{{ site.github_url }}">
                     <div class="col2">
-                      <img src="/assets/img/github_icon_light.png" height="16" width="16">
+                      <img src="{{ assets }}/img/github_icon_light.png" height="16" width="16">
                       <span> Github </span>
                     </div>
                   </a>
                   <a href="{{ site.linkedin_url }}">
                     <div class="col2">
-                      <img src="/assets/img/linkedin_icon_light.png" height="16" width="16">
+                      <img src="{{ assets }}/img/linkedin_icon_light.png" height="16" width="16">
                       <span> LinkedIn </span>
                     </div>
                   </a>
@@ -163,14 +176,14 @@
                 <div class="row">
                   <a href="mailto:{{ site.email }}">
                     <div class="col2">
-                      <img src="/assets/img/email_icon_light.png" height="16" width="16">
+                      <img src="{{ assets }}/img/email_icon_light.png" height="16" width="16">
                       <span> Email </span>
                     </div>
                   </a>
-                  <a href="{{ site.publications_url }}">
+                  <a href="{{ site.resume_url }}">
                     <div class="col2">
-                      <img src="/assets/img/cv_icon_light.png" height="16" width="16">
-                      <span> Publications </span>
+                      <img src="{{ assets }}/img/cv_icon_light.png" height="16" width="16">
+                      <span> Resume </span>
                     </div>
                   </a>
                 </div>
@@ -182,16 +195,9 @@
 
     <!-- Page content -->
     <div class="content">
-      {{ content }}
-    </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        <small>
-            <a href="/atom.xml">RSS Feed</a> <br />
-            &copy; 2021 Brendan Hasz <br />
-            Hosted on <a href="https://github.com/brendanhasz/brendanhasz.github.io">GitHub Pages</a>
-        </small>
+      {{ content }}
+
     </div>
 
   </body>
